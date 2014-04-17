@@ -1,0 +1,14 @@
+aa8e2c3eb587fba17e0a0f6c342f71c5 *DESCRIPTION
+8d46620b29ff9612153d0c22a2212817 *NAMESPACE
+f8ffd57713dc8d2764742cdc9cfa475e *R/covmat.R
+33518cafcfccb7c719f75a99b565ee19 *R/covmat.default.R
+23641d3a3a55fac36a06792df19fce2c *R/print.covmat.R
+0c78ddafd97af0f02aa412a78237d029 *R/shrinkcovmat.equal.R
+77104d8e6a4591507a6e6409f2a02fd7 *R/shrinkcovmat.identity.R
+9de4e9764ca2b5c7686a17556291234a *R/shrinkcovmat.unequal.R
+a9f0faec4689be62da85a37729a928c8 *data/colon.rda
+e300b70aa0c1aef1af6259f79faa2392 *man/ShrinkCovMat-package.Rd
+3f548929cf645e3665e295affe1e6bfc *man/colon.Rd
+32569b19865589bc9a7efe123fe66db7 *man/shrinkcovmat.equal.Rd
+d98f4c98b4dba85aec1df09c898fbfed *man/shrinkcovmat.identity.Rd
+cbe8a80f8913074d66c0b1fdf54b7889 *man/shrinkcovmat.unequal.Rd

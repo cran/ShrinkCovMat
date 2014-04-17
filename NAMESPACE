@@ -1,0 +1,4 @@
+export(shrinkcovmat.equal,shrinkcovmat.unequal,shrinkcovmat.identity)
+S3method(print,covmat)
+
+
