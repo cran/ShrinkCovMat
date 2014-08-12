@@ -18,7 +18,7 @@ a logical indicating if the mean vector is the zero vector.
 }
 }
 \details{
-The rows of the data matrix \code{data} correspond to the variables and the columns to different subjects. 
+The rows of the data matrix \code{data} correspond to variables and the columns to subjects. 
 }
 \value{
 Returns an object of the class "covmat" that has components:
@@ -29,7 +29,7 @@ Returns an object of the class "covmat" that has components:
 \item{centered}{If the data are centered around their mean vector.}
 }
 \references{
-Touloumis, A. (2014). Nonparametric Stein-type shrinkage covariance matrix estimators in high-dimensional settings. \emph{Submitted}.
+Touloumis, A. (2014). Nonparametric Stein-type Shrinkage Covariance Matrix Estimators in High-Dimensional Settings. \emph{Submitted}.
 }
 \author{
 Anestis Touloumis

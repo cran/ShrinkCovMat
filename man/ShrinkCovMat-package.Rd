@@ -11,8 +11,7 @@ These estimators are non-singular and well-conditioned regardless of the dimensi
 }
 
 \details{
-The Stein-type shrinkage covariance estimator is a convex linear combination of the sample covariance matrix and of a target matrix. This package implements the following three option for the target matrix: (a) a diagonal matrix with elements the average of the diagonal elements of the sample covariance matrix (\code{\link{shrinkcovmat.equal}}),
-(b) a diagonal matrix with elements the corresponding diagonal elements of the sample covariance matrix (\code{\link{shrinkcovmat.unequal}}), and (c) the identity matrix (\code{\link{shrinkcovmat.identity}}). The optimal shrinkage intensity determines how much the sample covariance matrix will be shrunk towards the selected target matrix. Estimation of the shrinkage intensity is described in Touloumis (2014). 
+Each of the implemented shrinkage covariance matrix estimators is a convex linear combination of the sample covariance matrix and of a target matrix. Three options are allowed for the target matrix: (a) the diagonal matrix with diagonal elements the average of the sample variances (\code{\link{shrinkcovmat.equal}}), (b) the diagonal matrix with diagonal elements the corresponding sample variances (\code{\link{shrinkcovmat.unequal}}), and (c) the identity matrix (\code{\link{shrinkcovmat.identity}}). The optimal shrinkage intensity determines how much the sample covariance matrix will be shrunk towards the selected target matrix. The estimation process of the optimal shrinkage intensity is described in Touloumis (2014). 
 }
 
 
@@ -23,7 +22,7 @@ Maintainer: Anestis Touloumis <Anestis.Touloumis@cruk.cam.ac.uk>
 }
 
 \references{
-Touloumis, A. (2014). Nonparametric Stein-type shrinkage covariance matrix estimators in high-dimensional settings. \emph{Submitted}.
+Touloumis, A. (2014). Nonparametric Stein-type Shrinkage Covariance Matrix Estimators in High-Dimensional Settings. \emph{Submitted}.
 }
 \keyword{ package }
 \seealso{

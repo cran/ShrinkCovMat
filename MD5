@@ -1,5 +1,6 @@
-aa8e2c3eb587fba17e0a0f6c342f71c5 *DESCRIPTION
+82b192c1598a63f3ca0f10ca3f3e2d34 *DESCRIPTION
 8d46620b29ff9612153d0c22a2212817 *NAMESPACE
+203807fcbcf0ff1dafb6bb4939746de8 *NEWS
 f8ffd57713dc8d2764742cdc9cfa475e *R/covmat.R
 33518cafcfccb7c719f75a99b565ee19 *R/covmat.default.R
 23641d3a3a55fac36a06792df19fce2c *R/print.covmat.R
@@ -7,8 +8,9 @@ f8ffd57713dc8d2764742cdc9cfa475e *R/covmat.R
 77104d8e6a4591507a6e6409f2a02fd7 *R/shrinkcovmat.identity.R
 9de4e9764ca2b5c7686a17556291234a *R/shrinkcovmat.unequal.R
 a9f0faec4689be62da85a37729a928c8 *data/colon.rda
-e300b70aa0c1aef1af6259f79faa2392 *man/ShrinkCovMat-package.Rd
-3f548929cf645e3665e295affe1e6bfc *man/colon.Rd
-32569b19865589bc9a7efe123fe66db7 *man/shrinkcovmat.equal.Rd
-d98f4c98b4dba85aec1df09c898fbfed *man/shrinkcovmat.identity.Rd
-cbe8a80f8913074d66c0b1fdf54b7889 *man/shrinkcovmat.unequal.Rd
+a8cf7c569054c2f56d5ca6b61f828537 *inst/CITATION
+fdb00c5ced659d7a68a200de5f0fe502 *man/ShrinkCovMat-package.Rd
+3141192e759b9f735b3ac4d99e40c471 *man/colon.Rd
+6aa6865334cf1394fe2b3bc3a358e1cb *man/shrinkcovmat.equal.Rd
+26db2b30e37d55b357be8dcdd11c1799 *man/shrinkcovmat.identity.Rd
+434b207566ff203d42d90d1dc1621c60 *man/shrinkcovmat.unequal.Rd

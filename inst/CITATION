@@ -1,0 +1,18 @@
+citHeader("To cite the R package 'ShrinkCovMat' in publications please use:")
+
+ 
+citEntry(entry="Manual",
+         title = "ShrinkCovMat: Shrinkage Covariance Matrix Estimators",
+         author = person("Anestis Touloumis"),
+         year = "2014",
+         note = "Version 1.0.1",
+         url="http://CRAN.R-PROJECT.ORG/package=ShrinkCovMat",
+         key="ShrinkCovMat-package",
+         textVersion = paste("Touloumis, A. (2014).",
+               "ShrinkCovMat: Shrinkage Covariance Matrix Estimators,",
+               "version 1.0.1, URL http://CRAN.R-PROJECT.ORG/package=ShrinkCovMat")
+         )
+
+
+
+

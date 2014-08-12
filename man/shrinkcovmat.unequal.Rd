@@ -1,10 +1,10 @@
 \name{shrinkcovmat.unequal}
 \alias{shrinkcovmat.unequal}
 \title{
-Shrinking the Sample Covariance Matrix Towards a Diagonal Matrix with Elements the Sample Variances.
+Shrinking the Sample Covariance Matrix Towards a Diagonal Matrix with Diagonal Elements the Sample Variances.
 }
 \description{
-This function provides a nonparametric Stein-type shrinkage estimator of the covariance matrix that is a linear combination of the sample covariance matrix and of a diagonal matrix with elements the corresponding elements of the sample covariance matrix.
+This function provides a nonparametric Stein-type shrinkage estimator of the covariance matrix that is a linear combination of the sample covariance matrix and of a diagonal matrix with diagonal elements the corresponding sample variances.
 }
 \usage{
 shrinkcovmat.unequal(data, centered = FALSE)
@@ -18,7 +18,7 @@ a logical indicating if the vectors are centered around their mean vector.
 }
 }
 \details{
-The rows of the data matrix \code{data} correspond to the variables and the columns to different subjects. 
+The rows of the data matrix \code{data} correspond to variables and the columns to subjects. 
 }
 \value{
 Returns an object of the class "covmat" that has components:
@@ -29,7 +29,7 @@ Returns an object of the class "covmat" that has components:
 \item{centered}{If the data are centered around their mean vector.}
 }
 \references{
-Touloumis, A. (2014). Nonparametric Stein-type shrinkage covariance matrix estimators in high-dimensional settings. \emph{Submitted}.
+Touloumis, A. (2014). Nonparametric Stein-type Shrinkage Covariance Matrix Estimators in High-Dimensional Settings. \emph{Submitted}.
 }
 \author{
 Anestis Touloumis
