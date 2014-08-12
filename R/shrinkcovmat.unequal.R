@@ -7,10 +7,10 @@ centered <- as.logical(centered)
 if(centered!=TRUE && centered!=FALSE)
   stop("'centered' must be either 'TRUE' or 'FALSE'")
 if(!centered){
+if(N < 4) stop("the number of columns should be greater than 3")
 datacen <- data-rowMeans(data)
 Sigmasam <- tcrossprod(datacen)/(N-1)
 trSigmahat <- sum(diag(Sigmasam))
-nuhat <- trSigmahat/p
 Q <- sum(colSums(datacen^2)^2)/(N-1)
 trSigma2hat <- (N-1)/(N*(N-2)*(N-3))*((N-1)*(N-2)*sum(Sigmasam^2)+(trSigmahat)^2-N*Q)
 help1 <- help21 <- help22 <- help3 <- rep(0,p)
@@ -30,6 +30,7 @@ trDs2 <- trD21-2*trD22+trD23
 lambdahat <- (trSigmahat^2+trSigma2hat-2*trDs2)/(N*trSigma2hat+trSigmahat^2-(N+1)*trDs2)
 lambdahat <- max(0,min(lambdahat,1))
 } else {
+if(N < 2) stop("the number of columns should be greater than 1")   
 Sigmasam <- tcrossprod(data)/N
 trSigmahat <- sum(diag(Sigmasam))
 trSigma2hat <- trDs2 <- 0

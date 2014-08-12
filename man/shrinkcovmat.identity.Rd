@@ -29,7 +29,7 @@ Returns an object of the class "covmat" that has components:
 \item{centered}{If the data are centered around their mean vector.}
 }
 \references{
-Touloumis, A. (2014). Nonparametric Stein-type Shrinkage Covariance Matrix Estimators in High-Dimensional Settings. \emph{Submitted}.
+Touloumis, A. (2014). Nonparametric Stein-type Shrinkage Covariance Matrix Estimators in High-Dimensional Settings. \emph{To appear in Computational Statistics and Data Analysis}, \url{http://arxiv.org/abs/1410.4726}.
 }
 \author{
 Anestis Touloumis

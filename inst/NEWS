@@ -1,5 +1,10 @@
+Version 1.0.2 [2014-10-20]
+ * Added function targetselection. 
+ * Updated CITATION file.
+ * Updated documention.
+
 Version 1.0.1 [2014-08-12]
- * Edited the help files. 
+ * Updated documentation. 
  * Created CITATION file. 
 
 Version 1.0.0 [2014-04-17]

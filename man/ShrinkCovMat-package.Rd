@@ -11,7 +11,7 @@ These estimators are non-singular and well-conditioned regardless of the dimensi
 }
 
 \details{
-Each of the implemented shrinkage covariance matrix estimators is a convex linear combination of the sample covariance matrix and of a target matrix. Three options are allowed for the target matrix: (a) the diagonal matrix with diagonal elements the average of the sample variances (\code{\link{shrinkcovmat.equal}}), (b) the diagonal matrix with diagonal elements the corresponding sample variances (\code{\link{shrinkcovmat.unequal}}), and (c) the identity matrix (\code{\link{shrinkcovmat.identity}}). The optimal shrinkage intensity determines how much the sample covariance matrix will be shrunk towards the selected target matrix. The estimation process of the optimal shrinkage intensity is described in Touloumis (2014). 
+Each of the implemented shrinkage covariance matrix estimators is a convex linear combination of the sample covariance matrix and of a target matrix. Three options are allowed for the target matrix: (a) the diagonal matrix with diagonal elements the average of the sample variances (\code{\link{shrinkcovmat.equal}}), (b) the diagonal matrix with diagonal elements the corresponding sample variances (\code{\link{shrinkcovmat.unequal}}), and (c) the identity matrix (\code{\link{shrinkcovmat.identity}}). The optimal shrinkage intensity determines how much the sample covariance matrix will be shrunk towards the selected target matrix. Estimation of the corresponding optimal shrinkage intensities is described in Touloumis (2014). The function (\code{\link{targetselection}}) might be useful for selecting one of the above target matrices.
 }
 
 
@@ -22,11 +22,11 @@ Maintainer: Anestis Touloumis <Anestis.Touloumis@cruk.cam.ac.uk>
 }
 
 \references{
-Touloumis, A. (2014). Nonparametric Stein-type Shrinkage Covariance Matrix Estimators in High-Dimensional Settings. \emph{Submitted}.
+Touloumis, A. (2014). Nonparametric Stein-type Shrinkage Covariance Matrix Estimators in High-Dimensional Settings. \emph{To appear in Computational Statistics and Data Analysis}, \url{http://arxiv.org/abs/1410.4726}.
 }
 \keyword{ package }
 \seealso{
-\code{\link{shrinkcovmat.equal}}, \code{\link{shrinkcovmat.unequal}} and \code{\link{shrinkcovmat.identity}}.
+\code{\link{shrinkcovmat.equal}}, \code{\link{shrinkcovmat.unequal}}, \code{\link{shrinkcovmat.identity}} and \code{\link{targetselection}}.
 }
 \examples{
 data(colon)

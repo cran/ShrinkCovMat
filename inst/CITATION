@@ -1,16 +1,15 @@
-citHeader("To cite the R package 'ShrinkCovMat' in publications please use:")
+citHeader("To cite the R package 'ShrinkCovMat' in publications, please use:")
 
  
-citEntry(entry="Manual",
-         title = "ShrinkCovMat: Shrinkage Covariance Matrix Estimators",
+citEntry(entry="Article",
+         title = "Nonparametric Stein-type Shrinkage Covariance Matrix Estimators in High-Dimensional Settings",
          author = person("Anestis Touloumis"),
          year = "2014",
-         note = "Version 1.0.1",
-         url="http://CRAN.R-PROJECT.ORG/package=ShrinkCovMat",
-         key="ShrinkCovMat-package",
+         journal="To appear in Computational Statistics and Data Analysis",
+         URL = "http://arxiv.org/abs/1410.4726",
          textVersion = paste("Touloumis, A. (2014).",
-               "ShrinkCovMat: Shrinkage Covariance Matrix Estimators,",
-               "version 1.0.1, URL http://CRAN.R-PROJECT.ORG/package=ShrinkCovMat")
+               "Nonparametric Stein-type Shrinkage Covariance Matrix Estimators in High-Dimensional Settings,",
+               "To appear in Computational Statistics and Data Analysis,","http://arxiv.org/abs/1410.4726")
          )
 
 
