@@ -1,15 +1,14 @@
 citHeader("To cite the R package 'ShrinkCovMat' in publications, please use:")
-
  
 citEntry(entry="Article",
          title = "Nonparametric Stein-type Shrinkage Covariance Matrix Estimators in High-Dimensional Settings",
          author = person("Anestis Touloumis"),
          year = "2014",
-         journal="To appear in Computational Statistics and Data Analysis",
-         URL = "http://arxiv.org/abs/1410.4726",
+         journal="Computational Statistics and Data Analysis",
+         URL = "http://dx.doi.org/10.1016/j.csda.2014.10.018",
          textVersion = paste("Touloumis, A. (2014).",
                "Nonparametric Stein-type Shrinkage Covariance Matrix Estimators in High-Dimensional Settings,",
-               "To appear in Computational Statistics and Data Analysis,","http://arxiv.org/abs/1410.4726")
+               "Computational Statistics and Data Analysis,","http://dx.doi.org/10.1016/j.csda.2014.10.018")
          )
 
 
