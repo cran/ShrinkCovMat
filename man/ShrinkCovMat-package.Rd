@@ -17,7 +17,7 @@ Each of the implemented shrinkage covariance matrix estimators is a convex linea
 \author{
 Anestis Touloumis
 
-Maintainer: Anestis Touloumis <Anestis.Touloumis@cruk.cam.ac.uk>
+Maintainer: Anestis Touloumis <A.Touloumis@brighton.ac.uk>
 }
 
 \references{
