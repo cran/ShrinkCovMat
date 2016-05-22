@@ -1,12 +1,10 @@
-covmat.default <-
-function(x,...) 
-{
-    object <- list() 
+shrinkcovmathat.default <- function(x, ...) {
+    object <- list()
     object$Sigmahat <- x$Sigmahat
     object$lambdahat <- x$lambdahat
-    object$Sigmasam <- x$Sigmasam
+    object$Sigmasample <- x$Sigmasample
     object$centered <- x$centered
     object$Target <- x$Target
-    class(object) <- "covmat"
+    class(object) <- "shrinkcovmathat"
     object
 }

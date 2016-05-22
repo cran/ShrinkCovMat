@@ -1,3 +1,10 @@
+Version 1.1.2 [2016-05-22]
+ * Fixed a bug in the function shrinkcovmat.unequal 
+   (reported by Prof. Thomas A. Severini).
+ * Updated documentation.
+ * Updated R files.
+ * Updated CITATION file.
+
 Version 1.1.1 [2015-09-08]
  * Updated email address of the maintainer.
 

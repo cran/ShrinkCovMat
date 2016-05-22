@@ -1,36 +1,54 @@
-shrinkcovmat.identity <-
-function(data,centered=FALSE){
-if(!is.matrix(data)) data <- as.matrix(data)
-p <- nrow(data)
-N <- ncol(data)
-centered <- as.logical(centered)
-if(centered!=TRUE && centered!=FALSE)
-  stop("'centered' must be either 'TRUE' or 'FALSE'")
-if(!centered){
-if(N < 4) stop("The number of columns should be greater than 3")  
-datacen <- data-rowMeans(data)
-Sigmasam <- tcrossprod(datacen)/(N-1)
-trSigmahat <- sum(diag(Sigmasam))
-Q <- sum(colSums(datacen^2)^2)/(N-1)
-trSigma2hat <- (N-1)/(N*(N-2)*(N-3))*((N-1)*(N-2)*sum(Sigmasam^2)+(trSigmahat)^2-N*Q)
-lambdahat <- (trSigmahat^2+trSigma2hat)/(N*trSigma2hat+trSigmahat^2-2*trSigmahat*(N-1)+p*(N-1))
-lambdahat <- max(0,min(lambdahat,1))
-} else {
-if(N < 2) stop("The number of columns should be greater than 1")   
-Sigmasam <- tcrossprod(data)/N
-trSigmahat <- sum(diag(Sigmasam))
-trSigma2hat <- 0
-for(i in 1:(N-1)) trSigma2hat <- sum(crossprod(data[,i],data[,(i+1):N])^2) + trSigma2hat              
-trSigma2hat <- 2*trSigma2hat/N/(N-1)
-lambdahat <- (trSigmahat^2+trSigma2hat)/((N+1)*trSigma2hat+trSigmahat^2-2*trSigmahat*N+p*N)
-lambdahat <- max(0,min(lambdahat,1))
-}
-if(lambdahat<1) {
-Sigmahat <- (1-lambdahat)*Sigmasam
-diag(Sigmahat) <- lambdahat+diag(Sigmahat)
-} else Sigmahat <- diag(lambdahat,p)
-Target <- diag(p)
-ans <- list(Sigmahat=Sigmahat,lambdahat=lambdahat,Sigmasample=Sigmasam,Target=Target,centered=centered)
-class(ans) <- "covmat"
-ans
+shrinkcovmat.identity <- function(data, centered = FALSE) {
+    if (!is.matrix(data)) 
+        data <- as.matrix(data)
+    p <- nrow(data)
+    N <- ncol(data)
+    centered <- as.logical(centered)
+    if (centered != TRUE && centered != FALSE) 
+        stop("'centered' must be either 'TRUE' or 'FALSE'")
+    if (!centered) {
+        if (N < 4) 
+            stop("The number of columns should be greater than 3")
+        DataCentered <- data - rowMeans(data)
+        SigmaSample <- tcrossprod(DataCentered)/(N - 
+            1)
+        TraceSigmaHat <- sum(diag(SigmaSample))
+        Q <- sum(colSums(DataCentered^2)^2)/(N - 
+            1)
+        TraceSigmaSquaredHat <- (N - 1)/(N * 
+            (N - 2) * (N - 3)) * ((N - 1) * 
+            (N - 2) * sum(SigmaSample^2) + 
+            (TraceSigmaHat)^2 - N * Q)
+        LambdaHat <- (TraceSigmaHat^2 + TraceSigmaSquaredHat)/(N * 
+            TraceSigmaSquaredHat + TraceSigmaHat^2 - 
+            2 * TraceSigmaHat * (N - 1) + 
+            p * (N - 1))
+        LambdaHat <- max(0, min(LambdaHat, 
+            1))
+    } else {
+        if (N < 2) 
+            stop("The number of columns should be greater than 1")
+        SigmaSample <- tcrossprod(data)/N
+        TraceSigmaHat <- sum(diag(SigmaSample))
+        TraceSigmaSquaredHat <- 0
+        for (i in 1:(N - 1)) TraceSigmaSquaredHat <- sum(crossprod(data[, 
+            i], data[, (i + 1):N])^2) + TraceSigmaSquaredHat
+        TraceSigmaSquaredHat <- 2 * TraceSigmaSquaredHat/N/(N - 
+            1)
+        LambdaHat <- (TraceSigmaHat^2 + TraceSigmaSquaredHat)/((N + 
+            1) * TraceSigmaSquaredHat + TraceSigmaHat^2 - 
+            2 * TraceSigmaHat * N + p * N)
+        LambdaHat <- max(0, min(LambdaHat, 
+            1))
+    }
+    if (LambdaHat < 1) {
+        SigmaHat <- (1 - LambdaHat) * SigmaSample
+        diag(SigmaHat) <- LambdaHat + diag(SigmaHat)
+    } else SigmaHat <- diag(LambdaHat, p)
+    Target <- diag(p)
+    ans <- list(Sigmahat = SigmaHat, lambdahat = LambdaHat, 
+        Sigmasample = SigmaSample, Target = Target, 
+        centered = centered)
+    class(ans) <- "shrinkcovmathat"
+    ans
 }
