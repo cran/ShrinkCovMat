@@ -10,7 +10,7 @@ Provides nonparametric Stein-type shrinkage estimators of the covariance matrix 
 }
 
 \details{
-Each of the implemented shrinkage covariance matrix estimators is a convex linear combination of the sample covariance matrix and of a target matrix. Three options are considered for the target matrix: (a) the diagonal matrix with diagonal elements the average of the sample variances (\code{\link{shrinkcovmat.equal}}), (b) the diagonal matrix with diagonal elements the corresponding sample variances (\code{\link{shrinkcovmat.unequal}}), and (c) the identity matrix (\code{\link{shrinkcovmat.identity}}). The optimal shrinkage intensity determines how much the sample covariance matrix will be shrunk towards the selected target matrix. Estimation of the corresponding optimal shrinkage intensities is discussed in Touloumis (2015). The function (\code{\link{targetselection}}) is designed to ease the selection of the target matrix.
+Each of the implemented shrinkage covariance matrix estimators is a convex linear combination of the sample covariance matrix and of a target matrix. Three options are considered for the target matrix: (a) the diagonal matrix with diagonal elements the average of the sample variances (\code{\link{shrinkcovmat.equal}}), (b) the diagonal matrix with diagonal elements the corresponding sample variances (\code{\link{shrinkcovmat.unequal}}), and (c) the identity matrix (\code{\link{shrinkcovmat.identity}}). The optimal shrinkage intensity determines how much the sample covariance matrix will be shrunk towards the selected target matrix. Estimation of the corresponding optimal shrinkage intensities is discussed in \cite{Touloumis (2015)}. The function (\code{\link{targetselection}}) is designed to ease the selection of the target matrix.
 }
 
 
@@ -31,11 +31,11 @@ Touloumis, A. (2015) Nonparametric Stein-type Shrinkage Covariance Matrix Estima
 data(colon)
 ## Estimating the covariance matrix for the
 ## normal tissue group.
-normal.group <- colon[, 1:40]
-Sigmahat1 <- shrinkcovmat.equal(normal.group)
+NormalGroup <- colon[, 1:40]
+Sigmahat1 <- shrinkcovmat.equal(NormalGroup)
 Sigmahat1
-Sigmahat2 <- shrinkcovmat.identity(normal.group)
+Sigmahat2 <- shrinkcovmat.identity(NormalGroup)
 Sigmahat2
-Sigmahat3 <- shrinkcovmat.unequal(normal.group)
+Sigmahat3 <- shrinkcovmat.unequal(NormalGroup)
 Sigmahat3
 }

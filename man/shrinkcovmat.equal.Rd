@@ -4,7 +4,7 @@
 Shrinking the Sample Covariance Matrix Towards a Diagonal Matrix with Equal Diagonal Elements 
 }
 \description{
-Provides a nonparametric Stein-type shrinkage estimator of the covariance matrix that is a linear combination of the sample covariance matrix and of a diagonal matrix with the average of the sample variances on the diagonal and zeros elsewehere.
+Provides a nonparametric Stein-type shrinkage estimator of the covariance matrix that is a linear combination of the sample covariance matrix and of a diagonal matrix with the average of the sample variances on the diagonal and zeros elsewhere.
 }
 \usage{
 shrinkcovmat.equal(data, centered = FALSE)
@@ -39,10 +39,10 @@ Anestis Touloumis
 }
 \examples{
 data(colon)
-normal.group <- colon[, 1:40]
-colon.group <- colon[, 41:62]
-Sigmahat.normal <- shrinkcovmat.equal(normal.group)
-Sigmahat.normal
-Sigmahat.colon <- shrinkcovmat.equal(colon.group)
-Sigmahat.colon
+NormalGroup <- colon[, 1:40]
+TumorGroup <- colon[, 41:62]
+Sigmahat.NormalGroup <- shrinkcovmat.equal(NormalGroup)
+Sigmahat.NormalGroup
+Sigmahat.TumorGroup <- shrinkcovmat.equal(TumorGroup)
+Sigmahat.TumorGroup
 }
