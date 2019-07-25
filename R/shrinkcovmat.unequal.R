@@ -1,69 +1,85 @@
-shrinkcovmat.unequal <- function(data, centered = FALSE) {
-    if (!is.matrix(data)) 
-        data <- as.matrix(data)
-    p <- nrow(data)
-    N <- ncol(data)
-    centered <- as.logical(centered)
-    if (centered != TRUE && centered != FALSE) 
-        stop("'centered' must be either 'TRUE' or 'FALSE'")
-    if (!centered) {
-        if (N < 4) 
-            stop("the number of columns should be greater than 3")
-        DataCentered <- data - rowMeans(data)
-        SigmaSample <- tcrossprod(DataCentered)/(N - 1)
-        TraceSigmaHat <- sum(diag(SigmaSample))
-        Q <- sum(colSums(DataCentered^2)^2)/(N - 1)
-        TraceSigmaSquaredHat <- (N - 1)/(N * (N - 2) * (N - 3)) * ((N - 
-            1) * (N - 2) * sum(SigmaSample^2) + (TraceSigmaHat)^2 - N * 
-            Q)
-        Sum1 <- Sum21 <- Sum22 <- Sum3 <- rep(0, p)
-        for (i in 1:(N - 1)) {
-            data2 <- matrix(data[, (i + 1):N], p, N - i)
-            Sum1 <- rowSums(data[, i] * data2) + Sum1
-            Sum21 <- rowSums(data[, i]^3 * data2) + Sum21
-            Sum22 <- rowSums(data2^3 * data[, i]) + Sum22
-            Sum3 <- rowSums(data[, i]^2 * data2^2) + Sum3
-        }
-        Term1 <- 2 * sum(Sum3)/N/(N - 1)
-        Term2 <- 2 * (sum(Sum1 * rowSums(data^2)) - sum(Sum21 + Sum22))
-        Term3 <- 4 * (sum(Sum1^2) - sum(Sum3) - Term2)
-        Term2 <- Term2/N/(N - 1)/(N - 2)
-        Term3 <- Term3/N/(N - 1)/(N - 2)/(N - 3)
-        TraceDiagonalSigmaSquaredHat <- Term1 - 2 * Term2 + Term3
-        LambdaHat <- (TraceSigmaHat^2 + TraceSigmaSquaredHat - 
-                        2 * TraceDiagonalSigmaSquaredHat)/
-          (N * TraceSigmaSquaredHat + TraceSigmaHat^2 - 
-             (N + 1) * TraceDiagonalSigmaSquaredHat)
-        LambdaHat <- max(0, min(LambdaHat, 1))
-    } else {
-        if (N < 2) 
-            stop("the number of columns should be greater than 1")
-        SigmaSample <- tcrossprod(data)/N
-        TraceSigmaHat <- sum(diag(SigmaSample))
-        TraceSigmaSquaredHat <- TraceDiagonalSigmaSquaredHat <- 0
-        for (i in 1:(N - 1)) {
-            TraceSigmaSquaredHat <- sum(crossprod(data[, i], data[, (i + 
-                1):N])^2) + TraceSigmaSquaredHat
-            TraceDiagonalSigmaSquaredHat <- sum((data[, i] * data[, (i + 
-                1):N])^2) + TraceDiagonalSigmaSquaredHat
-        }
-        TraceSigmaSquaredHat <- 2 * TraceSigmaSquaredHat/N/(N - 1)
-        TraceDiagonalSigmaSquaredHat <- 2 * TraceDiagonalSigmaSquaredHat/
-          (N*(N - 1))
-        LambdaHat <- (TraceSigmaHat^2 + TraceSigmaSquaredHat - 
-                        2 * TraceDiagonalSigmaSquaredHat)/
-          ((N + 1) * TraceSigmaSquaredHat + TraceSigmaHat^2 - 
-             (N + 2) * TraceDiagonalSigmaSquaredHat)
-        LambdaHat <- max(0, min(LambdaHat, 1))
-    }
-    DiagonalSigmaSample <- diag(SigmaSample)
-    if (LambdaHat < 1) {
-        SigmaHat <- (1 - LambdaHat) * SigmaSample
-        diag(SigmaHat) <- LambdaHat * DiagonalSigmaSample
-    } else SigmaHat <- diag(LambdaHat * DiagonalSigmaSample, p)
-    Target <- diag(DiagonalSigmaSample, p)
-    ans <- list(Sigmahat = SigmaHat, lambdahat = LambdaHat, 
-                Sigmasample = SigmaSample, Target = Target, centered = centered)
-    class(ans) <- "shrinkcovmathat"
-    ans
+#' Shrinking the Sample Covariance Matrix Towards a Diagonal Matrix with
+#' Diagonal Elements the Sample Variances.
+#'
+#' Provides a nonparametric Stein-type shrinkage estimator of the covariance
+#' matrix that is a linear combination of the sample covariance matrix and of
+#' the diagonal matrix with elements the corresponding sample variances on the
+#' diagonal and zeros elsewhere.
+#'
+#' The rows of the data matrix \code{data} correspond to variables and the
+#' columns to subjects.
+#'
+#' @param data a numeric matrix containing the data.
+#' @param centered a logical indicating if the vectors are centered around
+#' their mean vector.
+#' @return Returns an object of the class 'shrinkcovmathat' that has
+#' components: \item{Sigmahat}{The Stein-type shrinkage estimator of the
+#' covariance matrix.} \item{lambdahat}{The estimated optimal shrinkage
+#' intensity.} \item{Sigmasample}{The sample covariance matrix.}
+#' \item{Target}{The target covariance matrix.} \item{centered}{If the data are
+#' centered around their mean vector.}
+#' @author Anestis Touloumis
+#' @seealso \code{\link{shrinkcovmat.equal}} and
+#' \code{\link{shrinkcovmat.identity}}.
+#' @references Touloumis, A. (2015) nonparametric Stein-type Shrinkage
+#' Covariance Matrix Estimators in High-Dimensional Settings.
+#' \emph{Computational Statistics & Data Analysis} \bold{83}, 251--261.
+#' @examples
+#' data(colon)
+#' normal_group <- colon[, 1:40]
+#' tumor_group <- colon[, 41:62]
+#' sigma_hat_normal_group <- shrinkcovmat.unequal(normal_group)
+#' sigma_hat_normal_group
+#' sigma_hat_tumor_group <- shrinkcovmat.unequal(tumor_group)
+#' sigma_hat_tumor_group
+#' @export
+shrinkcovmat.unequal <- function(data, centered = FALSE) { # nolint
+  if (!is.matrix(data)) data <- as.matrix(data)
+  p <- nrow(data)
+  n <- ncol(data)
+  centered <- as.logical(centered)
+  if (centered != TRUE && centered != FALSE) {
+    stop("'centered' must be either 'TRUE' or 'FALSE'")
+  }
+  if (!centered) {
+    if (n < 4) stop("The number of columns should be greater than 3")
+    sample_covariance_matrix <- cov(t(data))
+    sample_variances <- apply(data, 1, var)
+    trace_statistics <- trace_stats_uncentered(data) # nolint
+    trace_sigma_hat <- trace_statistics[1]
+    trace_sigma_squared_hat <- trace_statistics[2]
+    trace_diagonal_sigma_sq_hat <- trace_statistics[3]
+    lambda_hat <- (trace_sigma_hat^2 + trace_sigma_squared_hat -
+      (2 - 2 / n) * trace_diagonal_sigma_sq_hat) /
+      (n * trace_sigma_squared_hat + trace_sigma_hat^2 -
+        (n + 1 - 2 / n) * trace_diagonal_sigma_sq_hat)
+    lambda_hat <- max(0, min(lambda_hat, 1))
+  } else {
+    if (n < 2) stop("The number of columns should be greater than 1")
+    sample_covariance_matrix <- tcrossprod(data) / n
+    sample_variances <- apply(data, 1, function(x) mean(x^2))
+    trace_statistics <- trace_stats_centered(data) # nolintr
+    trace_sigma_hat <- trace_statistics[1]
+    trace_sigma_squared_hat <- trace_statistics[2]
+    trace_diagonal_sigma_sq_hat <- trace_statistics[3]
+    lambda_hat <- (trace_sigma_hat^2 + trace_sigma_squared_hat -
+      (2 - 2 / (n + 1)) * trace_diagonal_sigma_sq_hat) /
+      ((n + 1) * trace_sigma_squared_hat + trace_sigma_hat^2 -
+        (n + 2 - 2 / (n + 1)) * trace_diagonal_sigma_sq_hat)
+    lambda_hat <- max(0, min(lambda_hat, 1))
+  }
+  if (lambda_hat < 1) {
+    sigma_hat <- (1 - lambda_hat) * sample_covariance_matrix +
+      diag(lambda_hat * sample_variances, p)
+  } else {
+    sigma_hat <- diag(lambda_hat * sample_variances, p)
+  }
+  target <- diag(sample_variances, p)
+  ans <- list(
+    Sigmahat = sigma_hat, lambdahat = lambda_hat,
+    Sigmasample = sample_covariance_matrix, Target = target,
+    centered = centered
+  )
+  class(ans) <- "shrinkcovmathat"
+  ans
 }
