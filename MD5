@@ -1,4 +1,4 @@
-aeeaf2d2713e70017cc0828a9b727fe2 *DESCRIPTION
+1e86fe9664835ac4cf08df6596288174 *DESCRIPTION
 0ade23bbf3f8d4c9149e8985f97b2cbf *NAMESPACE
 211e01d8eaecdb7003ed73fa4bf38cf0 *R/RcppExports.R
 9de782d46c40b765c1b0a4e4ce727603 *R/ShrinkCovMat-package.R
@@ -15,7 +15,7 @@ ee5c9a7e7cf5f6b2d11e92ff4b99fbc3 *R/targetsel.default.R
 f7ae13ca58c02f5f44964dd13c139825 *R/targetselection.R
 8a0fb13338a173c3e72129e97fb674a3 *data/colon.rda
 407f952271000b95768b1d961a3d8f52 *inst/CITATION
-1399e0445c3c996c29b5577fd09c7b46 *inst/NEWS
+290fe2614d35dda04d9a32b891461a48 *inst/NEWS
 cc384ce0caee8e106dd4283cef57e514 *man/ShrinkCovMat-package.Rd
 8d1cd0d8b901ca8550b4879ab3c7bb23 *man/colon.Rd
 282bdd48eb5f72bbd0620c3abc762673 *man/shrinkcovmat.equal.Rd
@@ -25,7 +25,7 @@ cc384ce0caee8e106dd4283cef57e514 *man/ShrinkCovMat-package.Rd
 61059660eb073d93e00e8ee054237071 *src/Makevars
 61059660eb073d93e00e8ee054237071 *src/Makevars.win
 f2e3b9ad2f9830158cbefefeb324150f *src/RcppExports.cpp
-2dabf47803619d5e20fa56df6434c0dd *src/ShrinkCovMat_cpp.cpp
+15fdf2493d03814a6670b3f88c49ac0d *src/ShrinkCovMat_cpp.cpp
 626fab5f5b13b8c8e0a6ef9887b86193 *tests/testthat.R
 c94531da9340fbcd145550cf86c1f350 *tests/testthat/test_misc.R
 952689cbba6ada019da2ba9d743598fd *tests/testthat/test_shrinkage_equal.R
